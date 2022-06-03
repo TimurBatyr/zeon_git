@@ -16,6 +16,6 @@ files_list = os.listdir(BASE_DIR)
 print(f'Files:{len(files_list)}\n')
 for i in files_list:
     print(i)
-    exit(0)
+
 
 

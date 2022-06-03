@@ -2,6 +2,8 @@ import os
 import sys
 from os import path
 
+print('Del_file.py have been called')
+
 args = sys.argv
 print(args)
 

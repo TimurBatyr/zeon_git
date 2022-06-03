@@ -9,7 +9,7 @@ print(args)
 BASE_DIR = 'zeon_fs2/'
 
 if len(args) != 2:
-    print('Should be 1 argument')
+    print('Should be 2 arguments')
     exit(0)
 
 
