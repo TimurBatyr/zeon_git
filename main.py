@@ -1,6 +1,10 @@
 import os
 import sys
-from pathlib import Path
+
+import init_fs
+import list_files
+import add_file
+import del_file
 
 args = sys.argv
 print(args)
@@ -8,9 +12,6 @@ print(args)
 if len(args) != 3:
     print('Should not be more than 3 argument')
 
-if len(args) == 1:
-    print('Add arguments')
-    exit(0)
 
 commands = {
     'init': 'init_fs.py',
@@ -30,19 +31,32 @@ elif not args[1] in commands:
 
 
 #Step-7
-if args[1] == list(commands)[0]:
-    os.system(f'python3 {commands.get(args[1])}')
+# if args[1] == list(commands)[0]:
+#     os.system(f'python3 {commands.get(args[1])}')
+#
+# elif args[1] == list(commands)[1]:
+#     os.system(f'python3 {commands.get(args[1])} {args[2]}')
+#
+# elif args[1] == list(commands)[2]:
+#     os.system(f'python3 {commands.get(args[1])} {args[2]}')
 
-elif args[1] == list(commands)[1]:
-    os.system(f'python3 {commands.get(args[1])} {args[2]}')
-
-elif args[1] == list(commands)[2]:
-    os.system(f'python3 {commands.get(args[1])} {args[2]}')
-
-elif args[1] == list(commands)[3]:
-    os.system(f'python3 {commands.get(args[1])}')
+# elif args[1] == list(commands)[3]:
+#     os.system(f'python3 {commands.get(args[1])}')
 
 
+#Step-8
 
+if __name__ == '__main__':
+    if args[1] == list(commands)[0]: # init
+        init_fs.initfs()
+
+    elif args[1] == list(commands)[1]: # add
+        add_file.addfile(args[1:3])
+
+    elif args[1] == list(commands)[2]: # del
+        del_file.delfile(args[1:3])
+
+    elif args[1] == list(commands)[3]: # list
+        list_files.listfiles()
 
 
