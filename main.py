@@ -1,3 +1,4 @@
+import os
 import sys
 
 from commands import del_file, add_file, init_fs, list_files
@@ -44,6 +45,7 @@ elif not args[1] in commands:
 
 if __name__ == '__main__':
     if args[1] == list(commands)[0]: # init
+        print(os.path.abspath(__file__))
         init_fs.initfs()
 
     elif args[1] == list(commands)[1]: # add
@@ -56,3 +58,6 @@ if __name__ == '__main__':
         list_files.listfiles()
 
 
+#Step-8
+if args[1] == list(commands)[0]: # init
+    print(os.getcwd())
