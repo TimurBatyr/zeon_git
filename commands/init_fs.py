@@ -2,15 +2,13 @@ import os
 import sys
 from os import path
 
+
 def initfs():
-    args = sys.argv
-    print(args)
+    BASE_DIR = '../zeon_fs2'
 
-    BASE_DIR = 'zeon_fs2'
-
-    if len(args) != 1:
-        print('Should be no argument')
-        # exit(0)
+    # if len(args) != 1:
+    #     print('Should be no argument')
+    #     # exit(0)
 
     if path.isdir(BASE_DIR):
         print('Such dir exists')
@@ -21,5 +19,9 @@ def initfs():
         print('Created')
         exit(0)
 
+
 if __name__ == '__main__':
+    from repeated_code import init_list
+    args = sys.argv
+    init_list(args)
     initfs()

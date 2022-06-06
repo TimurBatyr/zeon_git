@@ -1,10 +1,6 @@
-import os
 import sys
 
-import init_fs
-import list_files
-import add_file
-import del_file
+from commands import del_file, add_file, init_fs, list_files
 
 args = sys.argv
 print(args)

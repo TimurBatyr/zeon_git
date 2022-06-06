@@ -2,8 +2,6 @@ import os
 import sys
 from os import path
 
-print('Del_file.py have been called')
-
 args = sys.argv
 # print(args)
 
@@ -11,9 +9,9 @@ BASE_DIR = 'zeon_fs2/'
 
 def delfile(args):
 
-    if len(args) != 2:
-        print('Should be 1 argument')
-        exit(0)
+    # if len(args) != 2:
+    #     print('Should be 1 argument')
+    #     exit(0)
 
 
     if not path.isfile(f'{BASE_DIR}' + args[1]):
@@ -26,4 +24,7 @@ def delfile(args):
         exit(0)
 
 if __name__== '__main__':
+    from repeated_code import add_del
+    args = sys.argv
+    add_del(args[1:])
     delfile(args)

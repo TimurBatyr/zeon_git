@@ -4,18 +4,13 @@ from os import path
 from pathlib import Path
 
 
-args = sys.argv
-# print(args)
-
-
 def addfile(args):
 
     BASE_DIR = 'zeon_fs2/'
 
-    if len(args) != 2:
-        print('Should be 2 arguments')
-        exit(0)
-
+    # if len(args) != 2:
+    #     print('Should be 2 arguments')
+    #     exit(0)
 
     if not path.isfile(args[1]):
         print('It is not a file')
@@ -31,4 +26,7 @@ def addfile(args):
 
 
 if __name__ == '__main__':
+    from repeated_code import add_del
+    args = sys.argv
+    add_del(args[1:])
     addfile(args)
