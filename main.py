@@ -6,9 +6,17 @@ from commands import del_file, add_file, init_fs, list_files
 args = sys.argv
 print(args)
 
-if len(args) != 3:
+if len(args) > 3:
     print('Should not be more than 3 argument')
+    exit()
 
+elif len(args) == 1:
+    print('Add two more arguments')
+    exit()
+
+elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
+    print('Add one more argument')
+    exit()
 
 commands = {
     'init': 'init_fs.py',
@@ -41,7 +49,7 @@ elif not args[1] in commands:
 #     os.system(f'python3 {commands.get(args[1])}')
 
 
-#Step-8
+#Step-8, 10
 
 if __name__ == '__main__':
     if args[1] == list(commands)[0]: # init
@@ -57,7 +65,3 @@ if __name__ == '__main__':
     elif args[1] == list(commands)[3]: # list
         list_files.listfiles()
 
-
-#Step-8
-if args[1] == list(commands)[0]: # init
-    print(os.getcwd())
