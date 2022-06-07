@@ -18,6 +18,10 @@ elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
     print('Add one more argument')
     exit()
 
+else:
+    print('Excess of an argument')
+    exit()
+
 commands = {
     'init': 'init_fs.py',
     'add': 'add_file.py',

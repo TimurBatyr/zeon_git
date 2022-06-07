@@ -14,6 +14,7 @@ def init_list(args):
 def add_del(args):
     if len(args) != 2:
         print('Should be just 2 arguments')
+        exit()
 
 
 

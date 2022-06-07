@@ -26,5 +26,5 @@ def delfile(args):
 if __name__== '__main__':
     from repeated_code import add_del
     args = sys.argv
-    add_del(args[1:])
+    add_del(args)
     delfile(args)
