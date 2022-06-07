@@ -18,8 +18,8 @@ elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
     print('Add one more argument')
     exit()
 
-else:
-    print('Excess of an argument')
+elif (args[1] == 'list' or args[1] == 'list') and len(args) > 2:
+    print('Excess of args')
     exit()
 
 commands = {
