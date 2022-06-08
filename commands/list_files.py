@@ -4,7 +4,7 @@ import sys
 
 def listfiles():
 
-    BASE_DIR = 'zeon_fs2'
+    BASE_DIR = '.zeon_fs'
 
     # if len(args) != 1:
     #     print('Should be no argument')

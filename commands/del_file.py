@@ -5,7 +5,7 @@ from os import path
 args = sys.argv
 # print(args)
 
-BASE_DIR = 'zeon_fs2/'
+BASE_DIR = '.zeon_fs/'
 
 def delfile(args):
 

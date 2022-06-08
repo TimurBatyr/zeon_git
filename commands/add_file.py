@@ -6,7 +6,7 @@ from pathlib import Path
 
 def addfile(args):
 
-    BASE_DIR = 'zeon_fs2/'
+    BASE_DIR = '.zeon_fs/'
 
     # if len(args) != 2:
     #     print('Should be 2 arguments')
