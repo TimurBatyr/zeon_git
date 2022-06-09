@@ -59,7 +59,7 @@ elif not args[1] in commands:
 
 if __name__ == '__main__':
     if args[1] == list(commands)[0]: # init
-        print(os.path.abspath(__file__))
+        print(os.path.abspath(os.path.curdir))
         init_fs.initfs()
 
     elif args[1] == list(commands)[1]: # add
