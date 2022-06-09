@@ -1,7 +1,8 @@
 import os
 import sys
+from os import path
 
-from commands import del_file, add_file, init_fs, list_files
+from commands import del_file, add_file, init_fs, list_files, helper
 
 args = sys.argv
 print(args)
@@ -11,6 +12,7 @@ if len(args) > 3:
     exit()
 
 elif len(args) == 1:
+    # helper.get_dir(args)
     print('Add two more arguments')
     exit()
 
@@ -22,12 +24,12 @@ elif (args[1] == 'list' or args[1] == 'list') and len(args) > 2:
     print('Excess of args')
     exit()
 
+
 commands = {
     'init': 'init_fs.py',
     'add': 'add_file.py',
     'del': 'del_file.py',
     'list': 'list_files.py',
-    'get': 'get_file',
 }
 
 
@@ -68,4 +70,5 @@ if __name__ == '__main__':
 
     elif args[1] == list(commands)[3]: # list
         list_files.listfiles()
+
 

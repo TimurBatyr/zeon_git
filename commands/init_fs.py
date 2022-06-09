@@ -4,7 +4,7 @@ from os import path
 
 
 def initfs():
-    BASE_DIR = os.path.abspath(__file__)[:-20]+'/.zeon_fs'
+    BASE_DIR = os.path.abspath(__file__)[:-20] + '/.zeon_fs'
 
     # if len(args) != 1:
     #     print('Should be no argument')
@@ -21,7 +21,7 @@ def initfs():
 
 
 if __name__ == '__main__':
-    from repeated_code import init_list
+    from helper import init_list
     args = sys.argv
     init_list(args)
     initfs()

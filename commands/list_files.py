@@ -17,7 +17,7 @@ def listfiles():
 
 
 if __name__ == '__main__':
-    from repeated_code import init_list
+    from helper import init_list
     args = sys.argv
     init_list(args)
     listfiles()

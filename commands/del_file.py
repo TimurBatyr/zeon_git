@@ -7,12 +7,12 @@ args = sys.argv
 
 BASE_DIR = '.zeon_fs/'
 
+
 def delfile(args):
 
     # if len(args) != 2:
     #     print('Should be 1 argument')
     #     exit(0)
-
 
     if not path.isfile(f'{BASE_DIR}' + args[1]):
        print('Do not exist such file')
@@ -23,8 +23,9 @@ def delfile(args):
         print('Deleted')
         exit(0)
 
-if __name__== '__main__':
-    from repeated_code import add_del
+
+if __name__ == '__main__':
+    from helper import add_del
     args = sys.argv
     add_del(args)
     delfile(args)
