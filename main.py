@@ -1,6 +1,7 @@
 import os
 import sys
 from os import path
+from pathlib import Path
 
 from commands import del_file, add_file, init_fs, list_files, helper
 
@@ -12,8 +13,7 @@ if len(args) > 3:
     exit()
 
 elif len(args) == 1:
-    # helper.get_dir(args)
-    print('Add two more arguments')
+    helper.find_dir()
     exit()
 
 elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
@@ -55,8 +55,6 @@ elif not args[1] in commands:
 #     os.system(f'python3 {commands.get(args[1])}')
 
 
-#Step-8, 10
-
 if __name__ == '__main__':
     if args[1] == list(commands)[0]: # init
         print(os.path.abspath(os.path.curdir))
@@ -70,5 +68,6 @@ if __name__ == '__main__':
 
     elif args[1] == list(commands)[3]: # list
         list_files.listfiles()
+
 
 

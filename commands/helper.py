@@ -1,5 +1,6 @@
 import os
 import sys
+from pathlib import Path
 
 args = sys.argv
 # print(args)
@@ -18,21 +19,21 @@ def add_del(args):
         exit()
 
 
-# def get_dir(args):
-#     path = os.getcwd().split('/')
-#
-#     directory = '.zeon_fs'
-#     index = 0
-#
-#     while index > len(path):
-#         if directory in os.listdir('/'.join(path[:-1])):
-#             print(f'Directory named "{directory}" is here: {"/".join(path[:-1])}')
-#             break
-#         index += 1
-#     print("Not")
+def find_dir():
+    abs_path = os.getcwd()
+    directory = '.zeon_fs'
 
-
-
+    if os.path.exists((abs_path) + f'/{directory}'):
+        print("Directory exists")
+    else:
+        while True:
+            abs_path = Path(abs_path).parent
+            # if os.path.exists(str(abs_path) + '/{directory}'):
+            if directory in os.listdir(abs_path):
+                print(f'Dir found here -> {abs_path}')
+                break
+            if str(abs_path) == '/':
+                break
 
 
 
