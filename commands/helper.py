@@ -24,7 +24,7 @@ def find_dir():
     directory = '.zeon_fs'
 
     if os.path.exists((abs_path) + f'/{directory}'):
-        print("Directory exists")
+        print(f'Dir found here -> {abs_path}')
     else:
         while True:
             abs_path = Path(abs_path).parent

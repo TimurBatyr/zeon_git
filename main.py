@@ -1,7 +1,6 @@
 import os
 import sys
-from os import path
-from pathlib import Path
+
 
 from commands import del_file, add_file, init_fs, list_files, helper
 
@@ -16,13 +15,15 @@ elif len(args) == 1:
     helper.find_dir()
     exit()
 
+
 elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
     print('Add one more argument')
     exit()
 
-elif (args[1] == 'list' or args[1] == 'list') and len(args) > 2:
+elif (args[1] == 'list' or args[1] == 'init') and len(args) > 2:
     print('Excess of args')
     exit()
+
 
 
 commands = {
