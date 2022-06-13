@@ -3,14 +3,13 @@ import sys
 from os import path
 from pathlib import Path
 
+args = sys.argv
+# print(args)
+
+BASE_DIR = '.zeon_fs/'
+
 
 def addfile(args):
-
-    BASE_DIR = '.zeon_fs/'
-
-    # if len(args) != 2:
-    #     print('Should be 2 arguments')
-    #     exit(0)
 
     if not path.isfile(args[1]):
         print('It is not a file')
