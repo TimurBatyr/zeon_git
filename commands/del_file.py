@@ -21,7 +21,7 @@ def delfile(args):
 
 
 if __name__ == '__main__':
-    from helper import add_del
+    from helper import del_file
     args = sys.argv
-    add_del(args)
+    del_file(args)
     delfile(args)

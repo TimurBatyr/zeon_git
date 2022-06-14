@@ -13,10 +13,17 @@ def init_list(args):
         exit(0)
 
 
-def add_del(args):
+def del_file(args):
     if len(args) != 2:
         print('Should be just 2 arguments')
         exit()
+
+
+def add_file(args):
+    if len(args) < 2:
+        print('Should be just 3 arguments')
+        exit()
+
 
 
 def find_dir():
