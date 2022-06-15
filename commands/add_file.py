@@ -22,17 +22,20 @@ def addfile(args):
 
     elif len(args) <= 3:
         make_dir = args[2]
-        new_path = os.path.join(BASE_DIR, make_dir)
-        os.makedirs(new_path, exist_ok=True)
+        path_to = (os.path.join(BASE_DIR, make_dir.lstrip('/')))
+
+        os.makedirs(Path(path_to).parent, exist_ok=True)
         if not path.isfile(args[1]):
-            print('It is not a file')
+            print('Does not exist such file')
             exit(0)
 
-        elif path.isfile(BASE_DIR + f'/{args[2]}/{file_name}'):
+        # elif path.isfile(BASE_DIR + f'/{args[2]}/{file_name}'):
+        elif path.isfile(f'{path_to}/{file_name}'):
             print('Already exists file')
             exit(0)
 
-        shutil.copyfile(args[1], BASE_DIR + f'/{args[2]}/{file_name}')
+        # shutil.copyfile(args[1], f'{Path(path_to).parent}/{Path(path_to).name}')
+        shutil.copyfile(args[1], path_to)
         print('Added a file')
 
 
