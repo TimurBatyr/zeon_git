@@ -6,10 +6,6 @@ from os import path
 def initfs():
     BASE_DIR = os.path.abspath(os.path.curdir)+ '/.zeon_fs'
 
-    # if len(args) != 1:
-    #     print('Should be no argument')
-        # exit(0)
-
     if path.isdir(BASE_DIR):
         print('Such dir exists')
         exit(0)
