@@ -18,6 +18,7 @@ def delfile(args):
         # if file
         # os.remove(file)
         #shutil.rm
+
         if not path.isdir(full_path):
             if not path.isfile(full_path):
                 print('Does not exist such file or dir')
