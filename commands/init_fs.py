@@ -4,7 +4,7 @@ from os import path
 
 
 def initfs():
-    BASE_DIR = os.path.abspath(os.path.curdir)+ '/.zeon_fs'
+    BASE_DIR = os.path.abspath(os.path.curdir)+ '/.zeon_git'
 
     if path.isdir(BASE_DIR):
         print('Such dir exists')

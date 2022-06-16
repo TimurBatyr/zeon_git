@@ -28,7 +28,7 @@ def add_file(args):
 
 def find_dir():
     abs_path = os.getcwd()
-    directory = '.zeon_fs'
+    directory = '.zeon_git'
 
     if os.path.exists((abs_path) + f'/{directory}'):
         print(f'Dir found here -> {abs_path}')

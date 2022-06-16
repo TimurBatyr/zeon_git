@@ -7,7 +7,7 @@ from pathlib import Path
 
 def addfile(args):
 
-    BASE_DIR = '.zeon_fs'
+    BASE_DIR = '.zeon_git'
     file_name = Path(args[1]).name
 
     if len(args) <= 2:
