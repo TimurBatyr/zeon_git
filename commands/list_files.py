@@ -1,29 +1,30 @@
-import os
 import sys
 
 
 def listfiles():
-
     BASE_DIR = '.zeon_git'
-    # for root, dirs, files in os.walk(BASE_DIR, topdown=True):
-    #     # for name in files:
-    #     #     print(os.path.join(root, name))
-    #     # for name in dirs:
-    #     #     print(os.path.join(root, name))
-    #     print(f'Path: {root}')
-    #     print(f'\tDirectories: {dirs}')
-    #     print(f'\t\tFiles: {files}')
-    #     print('--------------------------------')
+    DATABASE_PATH = f'{BASE_DIR}/index.txt'
+    elements = []
+    files = {}
 
-    for dirpath, dirnames, filenames in os.walk(BASE_DIR):
-        directory_level = dirpath.replace(BASE_DIR, "")
-        directory_level = directory_level.count(os.sep)
-        indent = " " * 4
-        # print("{}{}/".format(indent * directory_level, os.path.basename(dirpath)))
-        print(f'{indent * directory_level} {os.path.basename(dirpath)}/')
+    with open(DATABASE_PATH, 'r') as file:
+        for item in (file.read()).split('\n'):
+            elements.append(item.split(',')[0])
 
-        for f in filenames:
-            print("{}{}".format(indent * (directory_level + 1), f))
+    for element in elements:
+        link = files
+        for path in element.split('/'):
+            if not path in link:
+                link[path] = {}
+            link = link[path]
+    print(files)
+
+    def to_tree(d, c=0):
+        for a, b in d.items():
+            yield '   '.join('|' for _ in range(c + 1)) + f'---{a}'
+            yield from ([] if b is None else to_tree(b, c + 1))
+
+    print('\n'.join(to_tree(files)))
 
 
 if __name__ == '__main__':

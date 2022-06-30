@@ -1,19 +1,31 @@
 import os
 import sys
 from os import path
+from pathlib import Path
 
+
+BASE_DIR = os.path.abspath(os.path.curdir)+ '/.zeon_git'
+DATABASE_PATH = f'{BASE_DIR}/index.txt'
+OBJECTS_PATH = f'{BASE_DIR}/objects'
 
 def initfs():
-    BASE_DIR = os.path.abspath(os.path.curdir)+ '/.zeon_git'
 
-    if path.isdir(BASE_DIR):
+    if path.isdir(OBJECTS_PATH):
         print('Such dir exists')
-        exit(0)
+        # exit(0)
 
-    if not path.isdir(BASE_DIR):
-        os.mkdir(BASE_DIR)
+    if not path.isdir(OBJECTS_PATH):
+        os.makedirs(OBJECTS_PATH)
         print('Created')
+        # exit(0)
+
+
+def initdb():
+    if not Path(DATABASE_PATH).exists():
+        Path(DATABASE_PATH).touch()
+        print('Database was initialized')
         exit(0)
+    print('Database already exists')
 
 
 if __name__ == '__main__':
@@ -21,3 +33,4 @@ if __name__ == '__main__':
     args = sys.argv
     init_list(args)
     initfs()
+    initdb()

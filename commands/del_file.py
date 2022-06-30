@@ -1,34 +1,43 @@
 import os
-import shutil
 import sys
-from os import path
-from pathlib import Path
+
+from commands.add_file import hash_content
 
 args = sys.argv
 # print(args)
 
 BASE_DIR = '.zeon_git'
+OBJECTS_PATH = f'{BASE_DIR}/objects'
+DATABASE_PATH = f'{BASE_DIR}/index.txt'
 
 
 def delfile(args):
-    full_path = (BASE_DIR+ f'/{args[1].lstrip("/")}')
+    full_path = (OBJECTS_PATH + f'/{args[1]}')
+    data = []
 
-    if len(args) <= 2:
+    with open(DATABASE_PATH, 'r') as index:
+        hashes = index.read()
+        if len(args) <= 2:
+            for line in hashes.split('\n'):
+                if not full_path.lstrip('/') in line:
+                    data.append(line)
+        else:
+            for line in hashes.split('\n'):
+                if not (OBJECTS_PATH + f'/{args[2].lstrip("/")}') in line:
+                    data.append(line)
+    with open(DATABASE_PATH, 'w') as file:
+        file.write('\n'.join(data))
 
-        # if file
-        # os.remove(file)
-        #shutil.rm
+    with open(DATABASE_PATH, 'r') as index:
+        hashes = index.read()
+        try:
+            if not hash_content(args) in hashes:
+                os.remove(OBJECTS_PATH + f'/{hash_content(args)}')
+                print('Deleted from objects')
+                exit()
+        except FileNotFoundError:
+            print('Already deleted hash-file')
 
-        if not path.isdir(full_path):
-            if not path.isfile(full_path):
-                print('Does not exist such file or dir')
-                return 0
-            os.remove(full_path)
-            print('File deleted')
-            return 0
-        shutil.rmtree(full_path)
-        print('Dir deleted')
-        return 0
 
 if __name__ == '__main__':
     from helper import del_file

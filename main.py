@@ -46,12 +46,13 @@ if __name__ == '__main__':
     if args[1] == list(commands)[0]: # init
         print(os.path.abspath(os.path.curdir))
         init_fs.initfs()
+        init_fs.initdb()
 
     elif args[1] == list(commands)[1]: # add
         add_file.addfile(args[1:4])
 
     elif args[1] == list(commands)[2]: # del
-        del_file.delfile(args[1:3])
+        del_file.delfile(args[1:4])
 
     elif args[1] == list(commands)[3]: # list
         list_files.listfiles()
