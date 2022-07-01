@@ -1,8 +1,9 @@
+import os
 import shutil
 import sys
 from hashlib import md5
 from os import path
-
+from pathlib import Path
 
 BASE_DIR = '.zeon_git'
 OBJECTS_PATH = f'{BASE_DIR}/objects'
@@ -32,6 +33,8 @@ def addfile(args):
 
 
 def add_to_db(args):
+    # file_name = Path(args[1]).name
+
     with open(DATABASE_PATH, 'r') as index:
         hashes = index.read()
         if len(args) <=2:
@@ -50,6 +53,9 @@ def add_to_db(args):
                     file.write(OBJECTS_PATH + f'/{args[2].lstrip("/")},{hash_content(args)}\n')
                     print('Added hash to index')
                     exit()
+            elif (OBJECTS_PATH + f'/{args[2].lstrip("/")}') in hashes:
+                print('Such path exists')
+                exit()
             else:
                 with open(DATABASE_PATH, 'a') as file:
                     file.seek(0, 0)
@@ -57,8 +63,7 @@ def add_to_db(args):
                     print('Added hash to index')
                     exit()
 
-            print('Such path exists')
-            exit()
+
 
 
 if __name__ == '__main__':
