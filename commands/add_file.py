@@ -17,53 +17,56 @@ def hash_content(args):
 
 
 def addfile(args):
+
+    if not path.isfile(args[1]):
+        print('It is not a file or does not exist such file')
+        exit(0)
+
     hashed_name = hash_content(args)
 
-    if len(args) <= 2:
-        if not path.isfile(args[1]):
-            print('It is not a file')
-            exit(0)
-        elif path.isfile(OBJECTS_PATH + f'/{hashed_name}'):
-            print('Already exists file')
-            # exit(0)
+    if path.isfile(OBJECTS_PATH + f'/{hashed_name}'):
+        print('Already file exists in objects')
+
+    else:
         shutil.copyfile(args[1], OBJECTS_PATH + f'/{hashed_name}')
-        print('Added a file')
+        print('Added a file to objects')
 
     add_to_db(args)
 
 
 def add_to_db(args):
-    # file_name = Path(args[1]).name
+    file_name = Path(args[1]).name
 
     with open(DATABASE_PATH, 'r') as index:
         hashes = index.read()
         if len(args) <=2:
             if not ((OBJECTS_PATH + f'/{args[1]}') in hashes):
                 with open(DATABASE_PATH, 'a') as file:
-                    file.seek(0, 0)
-                    file.write(OBJECTS_PATH + f'/{args[1]},{hash_content(args)}\n')
+                    file.write(OBJECTS_PATH + f'/{file_name},{hash_content(args)}\n')
                     print('Added hash to index')
                     exit()
-            print('Such path exists')
+            print('Such path exists in db')
             exit()
-        elif len(args) <= 3:
-            if not ((OBJECTS_PATH + f'/{args[2].lstrip("/")}') in hashes):
-                with open(DATABASE_PATH, 'a') as file:
-                    file.seek(0, 0)
-                    file.write(OBJECTS_PATH + f'/{args[2].lstrip("/")},{hash_content(args)}\n')
-                    print('Added hash to index')
-                    exit()
-            elif (OBJECTS_PATH + f'/{args[2].lstrip("/")}') in hashes:
-                print('Such path exists')
+
+        make_dir = args[2]
+        path_to = (os.path.join(OBJECTS_PATH, make_dir.lstrip('/')))
+
+        if not path_to in hashes and args[2].endswith('/') or args[2].endswith('.*'):
+            with open(DATABASE_PATH, 'a') as file:
+                file.write(f'{path_to}{file_name},{hash_content(args)}\n')
+                print('Added hash to index')
                 exit()
-            else:
-                with open(DATABASE_PATH, 'a') as file:
-                    file.seek(0, 0)
-                    file.write(OBJECTS_PATH + f'/{args[1]},{hash_content(args)}\n')
-                    print('Added hash to index')
-                    exit()
 
 
+        if not path_to in hashes:
+            with open(DATABASE_PATH, 'a') as file:
+                file.write(f'{path_to},{hash_content(args)}\n')
+                print('Added hash to index')
+                exit()
+
+        # if path_to in hashes:
+        print('Such path exists in db')
+        exit()
 
 
 if __name__ == '__main__':

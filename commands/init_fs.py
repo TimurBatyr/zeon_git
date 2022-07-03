@@ -11,13 +11,13 @@ OBJECTS_PATH = f'{BASE_DIR}/objects'
 def initfs():
 
     if path.isdir(OBJECTS_PATH):
-        print('Such dir exists')
-        # exit(0)
+        print('Such dir already exists')
+
 
     if not path.isdir(OBJECTS_PATH):
         os.makedirs(OBJECTS_PATH)
         print('Created')
-        # exit(0)
+
 
 
 def initdb():
