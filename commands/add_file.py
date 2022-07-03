@@ -50,8 +50,7 @@ def add_to_db(args):
 
         make_dir = args[2]
         path_to = (os.path.join(OBJECTS_PATH, make_dir.lstrip('/')))
-
-        if not path_to in hashes and args[2].endswith('/') or args[2].endswith('.*'):
+        if not path_to in hashes and args[2].endswith('/'):
             with open(DATABASE_PATH, 'a') as file:
                 file.write(f'{path_to}{file_name},{hash_content(args)}\n')
                 print('Added hash to index')
@@ -65,7 +64,7 @@ def add_to_db(args):
                 exit()
 
         # if path_to in hashes:
-        print('Such path exists in db')
+        print('Such path exists in index')
         exit()
 
 
