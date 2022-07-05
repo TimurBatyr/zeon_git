@@ -25,6 +25,7 @@ def delfile(args):
             for line in hashes.split('\n'):
                 if not (OBJECTS_PATH + f'/{args[2].lstrip("/")}') in line:
                     data.append(line)
+
     with open(DATABASE_PATH, 'w') as file:
         file.write('\n'.join(data))
 
