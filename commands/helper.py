@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -6,6 +7,12 @@ from pathlib import Path
 args = sys.argv
 
 
+def run_hook(status, command):
+    hooks = os.listdir(f'hookies/{command}/{status}/')
+    for hook in sorted(hooks):
+        if Path(f'hookies/{command}/{status}/{hook}').is_file():
+            print(f'python3 hookies/{command}/{status}/{hook}')
+            subprocess.call(f'python3 hookies/{command}/{status}/{hook}', shell=True)
 
 def init_list(args):
     pass

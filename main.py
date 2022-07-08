@@ -1,8 +1,9 @@
 import os
 import sys
-
+import time
 
 from commands import del_file, add_file, init_fs, list_files, helper
+
 
 args = sys.argv
 print(args)
@@ -45,8 +46,12 @@ elif not args[1] in commands:
 if __name__ == '__main__':
     if args[1] == list(commands)[0]: # init
         print(os.path.abspath(os.path.curdir))
+        helper.run_hook('pre_hook', 'init')
         init_fs.initfs()
         init_fs.initdb()
+        time.sleep(10)
+        helper.run_hook('post_hook', 'init')
+
 
     elif args[1] == list(commands)[1]: # add
         add_file.addfile(args[1:4])
