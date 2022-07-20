@@ -2,8 +2,7 @@ import os
 import sys
 import time
 
-from commands import del_file, add_file, init_fs, list_files, helper
-
+from commands import del_file, add_file, init_fs, list_files, helper, backup_files, restore_files
 
 args = sys.argv
 print(args)
@@ -21,7 +20,7 @@ elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
     print('Add one more argument')
     exit()
 
-elif (args[1] == 'list' or args[1] == 'init') and len(args) > 2:
+elif (args[1] == 'list' or args[1] == 'init' or args[1] == 'backup') and len(args) > 2:
     print('Excess of args')
     exit()
 
@@ -32,6 +31,8 @@ commands = {
     'add': 'add_file.py',
     'del': 'del_file.py',
     'list': 'list_files.py',
+    'backup': 'backup_files.py',
+    'restore': 'restore_files.py',
 }
 
 
@@ -62,5 +63,9 @@ if __name__ == '__main__':
     elif args[1] == list(commands)[3]: # list
         list_files.listfiles()
 
+    elif args[1] == list(commands)[4]: # backup
+        backup_files.backupfiles()
 
+    elif args[1] == list(commands)[5]: # restore
+        restore_files.restorefiles()
 
