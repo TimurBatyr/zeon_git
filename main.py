@@ -45,11 +45,11 @@ elif not args[1] in commands:
 
 if __name__ == '__main__':
     if args[1] == list(commands)[0]: # init
-        print(os.path.abspath(os.path.curdir))
+        # print(os.path.abspath(os.path.curdir))
         helper.run_hook('pre_hook', 'init')
         init_fs.initfs()
         init_fs.initdb()
-        time.sleep(10)
+        # time.sleep(10)
         helper.run_hook('post_hook', 'init')
 
 
