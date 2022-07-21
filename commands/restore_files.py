@@ -30,7 +30,7 @@ def del_zeon_git(dir):
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
-            print(f'The content of {dir} was deleted')
+                print(f'The content of {dir} was deleted')
         except Exception as e:
             print(f'Failed to delete {file_path}. Reason: {e}')
 
