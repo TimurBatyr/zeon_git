@@ -1,6 +1,6 @@
 import fcntl
 import os
-import sys
+
 from os import path
 from zipfile import ZipFile
 

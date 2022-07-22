@@ -1,7 +1,6 @@
 import fcntl
 import time
 
-import flock
 import os
 from os import path
 from zipfile import ZipFile
