@@ -3,12 +3,13 @@ import sys
 import time
 
 from commands import del_file, add_file, init_fs, list_files, helper, backup_files, restore_files
+from commands_snapshot import create_snapshot, lists_snapshot, dels_snapshot, restores_snapshot
 
 args = sys.argv
-print(args)
+# print(args)
 
-if len(args) > 4:
-    print('Should not be more than 3 argument')
+if len(args) > 5:
+    print('Should not be more than 4 argument')
     exit()
 
 elif len(args) == 1:
@@ -25,7 +26,6 @@ elif (args[1] == 'list' or args[1] == 'init' or args[1] == 'backup') and len(arg
     exit()
 
 
-
 commands = {
     'init': 'init_fs.py',
     'add': 'add_file.py',
@@ -33,11 +33,19 @@ commands = {
     'list': 'list_files.py',
     'backup': 'backup_files.py',
     'restore': 'restore_files.py',
+    # snapshot scripts
+    'create': 'create_snapshot.py',
+    'lists': 'lists_snapshot.py',
+    'dels': 'dels_snapshot.py',
+    'restores': 'restores_snapshot.py',
 }
 
 
 if args[1] in commands:
     print(f'Command called is : {args[1]}')
+
+elif args[2] in commands:
+    print(f'Command called is : {args[1]} {args[2]}')
 
 elif not args[1] in commands:
     print(f'Such command does not exist')
@@ -52,7 +60,6 @@ if __name__ == '__main__':
         init_fs.initdb()
         # time.sleep(10)
         helper.run_hook('post_hook', 'init')
-
 
     elif args[1] == list(commands)[1]: # add
         add_file.addfile(args[1:4])
@@ -69,3 +76,14 @@ if __name__ == '__main__':
     elif args[1] == list(commands)[5]: # restore
         restore_files.restorefiles()
 
+    elif args[2] == list(commands)[6]: #snapshot create
+        create_snapshot.create_ssht(args[1:4])
+
+    elif args[2] == list(commands)[7]: #snapshot list
+        lists_snapshot.lists_ssht()
+
+    elif args[2] == list(commands)[8]: #snapshot del
+        dels_snapshot.dels_ssht(args[1:4])
+
+    elif args[2] == list(commands)[9]: #snapshot restore
+        restores_snapshot.restores_ssht(args[1:4])
