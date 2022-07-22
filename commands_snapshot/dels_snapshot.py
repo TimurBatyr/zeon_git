@@ -4,7 +4,7 @@ from os import path
 SNAPSHOT_DIR = 'snapshots'
 
 def dels_ssht(args):
-    file_name = SNAPSHOT_DIR + f'/{args[1]}'
+    file_name = SNAPSHOT_DIR + f'/{args[2]}'
 
     if not path.isfile(file_name):
        print('Do not exist such file')

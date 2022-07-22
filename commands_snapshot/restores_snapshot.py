@@ -25,13 +25,11 @@ def del_zeon_git(dir):
 def restores_ssht(args):
     if not path.isdir(BASE_DIR):
         print('Such dir does not exist')
-        exit()
 
-    file_name = SNAPSHOT_DIR + f'/{args[1]}'
+    file_name = SNAPSHOT_DIR + f'/{args[2]}'
     if not path.isfile(file_name):
         print('Do not exist such zip file')
         exit(0)
-
 
     with ZipFile(file_name, 'r') as zip:
         zip.printdir()

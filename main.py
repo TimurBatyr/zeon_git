@@ -9,13 +9,12 @@ args = sys.argv
 # print(args)
 
 if len(args) > 4:
-    print('Should not be more than 3 argument')
+    print('Should not be more than 4 argument')
     exit()
 
 elif len(args) == 1:
     helper.find_dir()
     exit()
-
 
 elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
     print('Add one more argument')
@@ -23,6 +22,10 @@ elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
 
 elif (args[1] == 'list' or args[1] == 'init' or args[1] == 'backup') and len(args) > 2:
     print('Excess of args')
+    exit()
+
+elif args[1] == 'snapshot' and len(args) == 2:
+    print('Add some args')
     exit()
 
 
@@ -33,17 +36,21 @@ commands = {
     'list': 'list_files.py',
     'backup': 'backup_files.py',
     'restore': 'restore_files.py',
-    # snapshot scripts
-    'snapshot_create': 'create_snapshot.py',
-    'snapshot_list': 'lists_snapshot.py',
-    'snapshot_del': 'dels_snapshot.py',
-    'snapshot_restore': 'restores_snapshot.py',
+}
+
+commands_snapshot = {
+    'create': 'create_snapshot.py',
+    'list': 'lists_snapshot.py',
+    'del': 'dels_snapshot.py',
+    'restore': 'restores_snapshot.py',
 }
 
 
 if args[1] in commands:
     print(f'Command called is : {args[1]}')
 
+elif args[2] in commands_snapshot:
+    print(f'Command called is : {args[1]} {args[2]}')
 
 elif not args[1] in commands:
     print(f'Such command does not exist')
@@ -74,14 +81,15 @@ if __name__ == '__main__':
     elif args[1] == list(commands)[5]: # restore
         restore_files.restorefiles()
 
-    elif args[1] == list(commands)[6]: #snapshot create
+    #snapshots
+    elif args[2] == list(commands_snapshot)[0]: #snapshot create
         create_snapshot.create_ssht(args[1:4])
 
-    elif args[1] == list(commands)[7]: #snapshot list
+    elif args[2] == list(commands_snapshot)[1]: #snapshot list
         lists_snapshot.lists_ssht()
 
-    elif args[1] == list(commands)[8]: #snapshot del
+    elif args[2] == list(commands_snapshot)[2]: #snapshot del
         dels_snapshot.dels_ssht(args[1:4])
-
-    elif args[1] == list(commands)[9]: #snapshot restore
+    #
+    elif args[2] == list(commands_snapshot)[3]: #snapshot restore
         restores_snapshot.restores_ssht(args[1:4])
