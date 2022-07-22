@@ -8,8 +8,8 @@ from commands_snapshot import create_snapshot, lists_snapshot, dels_snapshot, re
 args = sys.argv
 # print(args)
 
-if len(args) > 5:
-    print('Should not be more than 4 argument')
+if len(args) > 4:
+    print('Should not be more than 3 argument')
     exit()
 
 elif len(args) == 1:
@@ -34,18 +34,16 @@ commands = {
     'backup': 'backup_files.py',
     'restore': 'restore_files.py',
     # snapshot scripts
-    'create': 'create_snapshot.py',
-    'lists': 'lists_snapshot.py',
-    'dels': 'dels_snapshot.py',
-    'restores': 'restores_snapshot.py',
+    'snapshot_create': 'create_snapshot.py',
+    'snapshot_list': 'lists_snapshot.py',
+    'snapshot_del': 'dels_snapshot.py',
+    'snapshot_restore': 'restores_snapshot.py',
 }
 
 
 if args[1] in commands:
     print(f'Command called is : {args[1]}')
 
-elif args[2] in commands:
-    print(f'Command called is : {args[1]} {args[2]}')
 
 elif not args[1] in commands:
     print(f'Such command does not exist')
@@ -76,14 +74,14 @@ if __name__ == '__main__':
     elif args[1] == list(commands)[5]: # restore
         restore_files.restorefiles()
 
-    elif args[2] == list(commands)[6]: #snapshot create
+    elif args[1] == list(commands)[6]: #snapshot create
         create_snapshot.create_ssht(args[1:4])
 
-    elif args[2] == list(commands)[7]: #snapshot list
+    elif args[1] == list(commands)[7]: #snapshot list
         lists_snapshot.lists_ssht()
 
-    elif args[2] == list(commands)[8]: #snapshot del
+    elif args[1] == list(commands)[8]: #snapshot del
         dels_snapshot.dels_ssht(args[1:4])
 
-    elif args[2] == list(commands)[9]: #snapshot restore
+    elif args[1] == list(commands)[9]: #snapshot restore
         restores_snapshot.restores_ssht(args[1:4])

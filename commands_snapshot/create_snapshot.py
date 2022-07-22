@@ -8,10 +8,10 @@ BASE_DIR = '.zeon_git'
 SNAPSHOT_DIR = 'snapshots'
 
 def create_ssht(args):
-    if path.isfile(SNAPSHOT_DIR + f'/{args[2]}'):
+    if path.isfile(SNAPSHOT_DIR + f'/{args[1]}'):
         print('Already file exists in snapshots')
     else:
-        zipfile = ZipFile(f'{SNAPSHOT_DIR}/{args[2]}', 'w')
+        zipfile = ZipFile(f'{SNAPSHOT_DIR}/{args[1]}', 'w')
         for root, dirs, files in os.walk(BASE_DIR):
             for f in files:
                 with open(os.path.join(root, f), 'a') as file:

@@ -27,7 +27,7 @@ def restores_ssht(args):
         print('Such dir does not exist')
         exit()
 
-    file_name = SNAPSHOT_DIR + f'/{args[2]}'
+    file_name = SNAPSHOT_DIR + f'/{args[1]}'
     if not path.isfile(file_name):
         print('Do not exist such zip file')
         exit(0)
