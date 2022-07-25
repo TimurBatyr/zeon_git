@@ -4,6 +4,7 @@ import shutil
 from os import path
 from zipfile import ZipFile
 
+
 BASE_DIR = '.zeon_git'
 INTERIM_DIR = '.zeon_git_interim'
 

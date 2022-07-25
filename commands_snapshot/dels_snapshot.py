@@ -4,6 +4,7 @@ from os import path
 
 SNAPSHOT_DIR = 'snapshots'
 
+
 def dels_ssht(args):
     file_name = SNAPSHOT_DIR + f'/{args[2]}'
 

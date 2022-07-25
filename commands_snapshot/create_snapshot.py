@@ -7,6 +7,7 @@ from zipfile import ZipFile
 BASE_DIR = '.zeon_git'
 SNAPSHOT_DIR = 'snapshots'
 
+
 def create_ssht(args):
     if path.isfile(SNAPSHOT_DIR + f'/{args[2]}'):
         print('Already file exists in snapshots')

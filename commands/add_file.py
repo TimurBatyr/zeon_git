@@ -6,6 +6,7 @@ from hashlib import md5
 from os import path
 from pathlib import Path
 
+
 BASE_DIR = '.zeon_git'
 OBJECTS_PATH = f'{BASE_DIR}/objects'
 DATABASE_PATH = f'{BASE_DIR}/index.txt'
@@ -18,7 +19,6 @@ def hash_content(args):
 
 
 def addfile(args):
-
     if not path.isfile(args[1]):
         print('It is not a file or does not exist such file')
         exit(0)

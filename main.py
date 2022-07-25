@@ -2,7 +2,8 @@ import sys
 import time
 
 from commands import del_file, add_file, init_fs, list_files, helper, backup_files, restore_files
-from commands_snapshot import create_snapshot, lists_snapshot, dels_snapshot, restores_snapshot
+from commands_snapshot import create_snapshot, lists_snapshot, dels_snapshot, restores_snapshot, checkout_snapshot, \
+    commit_snapshot
 
 args = sys.argv
 # print(args)
@@ -42,6 +43,9 @@ commands_snapshot = {
     'list': 'lists_snapshot.py',
     'del': 'dels_snapshot.py',
     'restore': 'restores_snapshot.py',
+    'checkout': 'checkout_snapshot.py',
+    'commit': 'commit_snapshot.py',
+
 }
 
 
@@ -89,6 +93,12 @@ if __name__ == '__main__':
 
     elif args[2] == list(commands_snapshot)[2]: #snapshot del
         dels_snapshot.dels_ssht(args[1:4])
-    #
+
     elif args[2] == list(commands_snapshot)[3]: #snapshot restore
         restores_snapshot.restores_ssht(args[1:4])
+
+    elif args[2] == list(commands_snapshot)[4]: #snapshot checkout
+        checkout_snapshot.checkout_ssht(args[1:4])
+
+    elif args[2] == list(commands_snapshot)[5]: #snapshot commit
+        commit_snapshot.commit_ssht(args[1:4])
