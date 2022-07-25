@@ -23,7 +23,7 @@ elif (args[1] == 'list' or args[1] == 'init' or args[1] == 'backup') and len(arg
     print('Excess of args')
     exit()
 
-elif args[1] == 'snapshot' or len(args) == 3:
+elif args[1] == 'snapshot' and len(args) == 2:
     print('Add some args')
     exit()
 
