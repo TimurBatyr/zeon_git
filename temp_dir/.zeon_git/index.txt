@@ -1,3 +1,0 @@
-.zeon_git/objects/test.txt,b2ca678b4c936f905fb82f2733f5297f
-.zeon_git/objects/ttt/tttt/test.txt,b2ca678b4c936f905fb82f2733f5297f
-.zeon_git/objects/text.txt,59149525253f46b433875437b307b774

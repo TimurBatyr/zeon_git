@@ -9,6 +9,10 @@ SNAPSHOT_DIR = 'snapshots'
 
 
 def create_ssht(args):
+    if not path.isdir(SNAPSHOT_DIR):
+        os.mkdir(SNAPSHOT_DIR)
+        print('Created snapshot dir')
+
     if path.isfile(SNAPSHOT_DIR + f'/{args[2]}'):
         print('Already file exists in snapshots')
     else:
@@ -19,5 +23,6 @@ def create_ssht(args):
                     fcntl.flock(file, fcntl.LOCK_EX | fcntl.LOCK_NB)
                     zipfile.write(os.path.join(root, f))
                     fcntl.flock(file, fcntl.LOCK_UN)
-        print('Created snapshot')
+        print(f'Created snapshot: {args[2]}')
         zipfile.close()
+        zipfile.printdir()

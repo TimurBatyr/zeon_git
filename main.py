@@ -8,7 +8,7 @@ from commands_snapshot import create_snapshot, lists_snapshot, dels_snapshot, re
 args = sys.argv
 # print(args)
 
-if len(args) > 4:
+if len(args) > 5:
     print('Should not be more than 4 argument')
     exit()
 
@@ -25,7 +25,7 @@ elif (args[1] == 'list' or args[1] == 'init' or args[1] == 'backup') and len(arg
     exit()
 
 elif (args[1] == 'snapshot' or args[1] != 'snapshot') and len(args) == 2:
-    print('Add some args')
+    print('Add or delete some args')
     exit()
 
 
@@ -101,4 +101,4 @@ if __name__ == '__main__':
         checkout_snapshot.checkout_ssht(args[1:4])
 
     elif args[2] == list(commands_snapshot)[5]: #snapshot commit
-        commit_snapshot.commit_ssht(args[1:4])
+        commit_snapshot.commit_ssht(args[1:5])
