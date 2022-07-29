@@ -22,12 +22,12 @@ HOOKIES_PATHS = [
 
 def initfs():
 
-    if path.isdir(OBJECTS_PATH):
-        print('Such dir already exists')
-
     if not path.isdir(OBJECTS_PATH):
         os.makedirs(OBJECTS_PATH)
         print('Created')
+
+    else:
+        print('Such dir already exists')
 
 
 def initdb():
