@@ -1,7 +1,7 @@
 # Zeon Git is analog of git
 - with features
--- add files
--- delete files
+ - add files
+ - delete files
 
 
 Commands:
