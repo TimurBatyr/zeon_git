@@ -1,34 +1,39 @@
 import os
+import subprocess
 import sys
+
 from pathlib import Path
 
 args = sys.argv
-# print(args)
-# print(len(args))
 
 
-def init_list(args):
-    if len(args) != 1:
-        print('Should be just 1 argument')
-        exit(0)
+def run_hook(status, command):
+    hooks = sorted(os.listdir(f'hookies/{command}/{status}/'))
+    with_at = []
+    list_hooks = []
+    for hook in hooks:
+        hook_name = Path(hook).stem
+        if '@' in hook_name:
+            with_at.append(hook)
+        else:
+            list_hooks.append(hook)
 
+    if with_at != []:
+        list_hooks.insert(2, with_at)
 
-def del_file(args):
-    if len(args) != 2:
-        print('Should be just 2 arguments')
-        exit()
+    for hook in list_hooks:
+        if isinstance(hook,list):
+            if Path(f'hookies/{command}/{status}/{hook[0]}').is_file() and Path(f'hookies/{command}/{status}/{hook[1]}').is_file():
+                subprocess.call(f'python3 hookies/{command}/{status}/{hook[0]}', shell=True)
+                subprocess.call(f'python3 hookies/{command}/{status}/{hook[1]}', shell=True)
 
-
-def add_file(args):
-    if len(args) < 2:
-        print('Should be just 3 arguments')
-        exit()
-
+        if Path(f'hookies/{command}/{status}/{hook}').is_file():
+            subprocess.call(f'python3 hookies/{command}/{status}/{hook}', shell=True)
 
 
 def find_dir():
     abs_path = os.getcwd()
-    directory = '.zeon_fs'
+    directory = '.zeon_git'
 
     if os.path.exists((abs_path) + f'/{directory}'):
         print(f'Dir found here -> {abs_path}')
