@@ -24,6 +24,6 @@
   - fs snapshot restore file_name(zeon_1.zip) --> restores file_name(zeon_1.zip) from directory "snapshot" to directory ".zeon_git"
   - fs snapshot checkout file_name(zeon_1.zip) --> derives file_name(zeon_1.zip) from directpry "snapshot" and puts into a temporary directory "temp_dir"
     in order replace the current file in objects
-  - fs snapshot commit file_name1(dir/dir/test.txt) file_name2(rest.txt) --> replaces "file_name1" to "file_name2"
+  - fs snapshot commit file_name1(dir/dir/test.txt) file_name2(rest.txt) --> replaces "file_name1" with "file_name2"
   
   
