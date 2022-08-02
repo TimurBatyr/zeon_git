@@ -13,8 +13,7 @@ if len(args) > 5:
     exit()
 
 elif len(args) == 1:
-    helper.find_dir()
-    exit()
+    exit(helper.find_dir())
 
 elif (args[1] == 'add' or args[1] == 'del') and len(args) == 2:
     print('Add one more argument')
@@ -27,7 +26,6 @@ elif (args[1] == 'list' or args[1] == 'init' or args[1] == 'backup') and len(arg
 elif args[1] == 'snapshot' and len(args) == 2:
     print('Add or delete some args')
     exit()
-
 
 commands = {
     'init': 'init_fs.py',
@@ -47,7 +45,6 @@ commands_snapshot = {
     'commit': 'commit_snapshot.py',
 
 }
-
 
 if args[1] in commands:
     print(f'Command called is : {args[1]}')

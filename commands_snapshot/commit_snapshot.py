@@ -21,6 +21,9 @@ def hash_content(args):
 
 
 def commit_ssht(args):
+    if not os.path.isdir('temp_dir'):
+        exit('No file')
+
     hashed_file = hash_content(args[3])
 
     with open(TEMP_DIR, 'r') as db:
