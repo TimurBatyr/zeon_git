@@ -95,7 +95,7 @@ if __name__ == '__main__':
         restores_snapshot.restores_ssht(args[1:4])
 
     elif args[2] == list(commands_snapshot)[4]: #snapshot checkout
-        checkout_snapshot.checkout_ssht(args[1:4])
+        checkout_snapshot.checkout_ssht(args[1:5])
 
     elif args[2] == list(commands_snapshot)[5]: #snapshot commit
         commit_snapshot.commit_ssht(args[1:5])
